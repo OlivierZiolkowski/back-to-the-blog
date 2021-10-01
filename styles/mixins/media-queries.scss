@@ -1,0 +1,40 @@
+// Rules to follow from mobile
+@mixin mobile {
+    @media screen and (min-width: map-get($breakpoints, xs)) {
+        @content;
+    }
+}
+
+// Rules to follow up from mobile
+@mixin mobile-max {
+    @media screen and (max-width: map-get($breakpoints, sm)) {
+        @content;
+    }
+}
+
+// Rules to follow from tablet
+@mixin tablet {
+    @media screen and (min-width: map-get($breakpoints, md)) {
+        @content;
+    }
+}
+// Rules to follow up from tablet
+@mixin tablet-max {
+    @media screen and (max-width: map-get($breakpoints, md)) {
+        @content;
+    }
+}
+
+// Rules to follow from desktop
+@mixin desktop {
+    @media screen and (min-width: map-get($breakpoints, lg)) {
+        @content;
+    }
+}
+
+// Rules to follow up from desktop
+@mixin desktop-max {
+    @media screen and (max-width: map-get($breakpoints, xl)) {
+        @content;
+    }
+}

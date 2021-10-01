@@ -1,0 +1,45 @@
+@import "@styles/styles.scss";
+
+
+// Style rules for article card block
+// from top of homepage
+.article {
+    position: relative;
+
+    & > * {
+        color: $c-first;
+    }
+
+    & h2 {
+        position: absolute;
+        bottom: 50px;
+        left: 8px;
+        margin-right: 8px;
+        background-color: transparentize($c-fourth, 0.6);
+        padding: 4px 8px;
+    }
+}
+
+// Style rules for meta infos (category & date)
+.articleMeta {
+    display: flex;
+    flex-direction: row wrap;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    
+    & > * {
+        padding: 4px 8px;
+        font-size: 12px;
+        font-weight: 700;
+    }
+    & > :first-child {
+        margin-right: 8px;
+        background-color: $c-red;
+    }
+    
+    & :last-child {
+        background-color: transparentize($c-fourth, 0.6);
+    }
+}

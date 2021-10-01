@@ -6,7 +6,7 @@ Dans ce projet, j'ai souhaité me tourner vers le Framework **[Next.js](https://
 
 La thématique sera autour de la trilogie "Retour vers le futur" (clin d'oeil à la promo McFly O'Clock 2020 😉) et aux acteurs du film mais je ne pense pas qu'ils viendront un jour sur ce repo mais sait-on jamais 😅 !
 
-**CE PROJET EST ENCORE EN COURS DE CONSTRUCTION** - dernière mise à jour de ce document : 24 septembre 2021
+**CE PROJET EN COURS DE CONSTRUCTION** - dernière mise à jour de ce document : 30 septembre 2021
 
 ## Sommaire
 
