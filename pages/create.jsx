@@ -34,9 +34,9 @@ export default function CreatePage() {
                     "Catégorie choisie invalide"
                 )
                 .required("Veuillez choisir une catégorie"),
-            coverImage: Yup.string().required(
-                "Veuillez ajouter un lien vers une illustration"
-            ),
+            coverImage: Yup.string()
+                .url("Le chemin doit être une URL vers une image")
+                .required("Veuillez ajouter un lien vers une illustration"),
             coverImageAlt: Yup.string().required(
                 "Veillez ajouter une description de l'illustration"
             ),

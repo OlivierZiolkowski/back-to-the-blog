@@ -29,14 +29,14 @@ La thématique sera autour de la trilogie "Retour vers le futur" (clin d'oeil à
 
 Les utilisateurs sont capables de :
 
--   Consulter une liste d'articles sélectionnés sur la page d'accueil
+-   Consulter une liste d'articles sélectionnés sur la page d'accueil ✅
 -   Consulter un article (prochainement 🤙)
 -   Consulter une page comprenant les articles selon la catégorie sélectionnée (prochainement 🤙)
 -   Laisser un commentaire sur la page d'un article (prochainement 🤙)
 -   S'identifier et créer un article à publier directement par l'interface (prochainement 🤙)
 
 L'administrateur est capable de :
-- Rédiger un nouvel article (en cours 💪)
+- Rédiger un nouvel article ✅
 - Modifier ou supprimer un article publié (prochainement 🤙)
 
 ### Screenshots
