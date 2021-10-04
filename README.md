@@ -42,7 +42,7 @@ Les utilisateurs sont capables de :
 ### Liens
 
 -   Repo GitHub : [github.com/OlivierZiolkowski](https://github.com/OlivierZiolkowski/back-to-the-blog)
--   Live Site URL : [Coming soon 🐱‍👤](/)
+-   Live Site URL : [Déploiement sur Vercel](https://back-to-the-blog-88dad58nk-olivierziolkowski.vercel.app/)
 
 ## Mon procédé
 
