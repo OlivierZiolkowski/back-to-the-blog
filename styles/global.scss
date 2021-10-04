@@ -22,3 +22,35 @@ h2,
 h3 {
     font-family: "Lato", "Times New Roman", Times, serif;
 }
+
+label,
+input,
+select,
+textarea {
+  display: block;
+  width: 100%;
+}
+
+label {
+  margin-bottom: 4px;
+}
+
+input,
+select,
+textarea {
+  padding: 4px;
+  font-size: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  border: 1px solid $c-fourth;
+}
+
+button {
+  background-color: $c-blue;
+  border: 1px solid $c-blue;
+  border-radius: 4px;
+  padding: 8px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
