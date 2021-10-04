@@ -25,7 +25,9 @@
         }
     
         @include desktop {
-            height: 400px;
+            article {
+                height: 400px;
+            }
         }
     }
     // rules only for the elements where not the first on the section
