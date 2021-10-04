@@ -9,9 +9,12 @@ import { useState } from "react";
 import styles from "@styles/create.module.scss";
 
 export default function CreatePage() {
+    // Create a new router from 'next-router'
     const router = useRouter();
+    // Create a 'loading' state when user creates a new post
     const [isLoading, setIsLoading] = useState(false);
 
+    // Formik parameters for new post creation form
     const formik = useFormik({
         initialValues: {
             title: "",
@@ -20,6 +23,7 @@ export default function CreatePage() {
             coverImageAlt: "",
             content: "",
         },
+        // Validation
         validationSchema: Yup.object({
             title: Yup.string()
                 .max(100, "Le titre doit faire moins de 100 caractères")
@@ -40,13 +44,13 @@ export default function CreatePage() {
                 "Veuillez ajouter le contenu de votre article"
             ),
         }),
+        // Defines what's happened on form submission
         onSubmit: (values) => {
-            // console.log(typeof values);
-            // console.log(values);
             setIsLoading(true);
             createPost(values)
                 .then(() => {
                     setIsLoading(false);
+                    alert("Votre article a bien été créé");
                     router.push("/");
                 })
                 .catch((err) => {
@@ -60,7 +64,9 @@ export default function CreatePage() {
         <div className={styles.CreatePage}>
             <form onSubmit={formik.handleSubmit}>
                 <h1>Écrire un nouvel article</h1>
-                {/* Post title field*/}
+                {/*
+                    Post title field 
+                */}
                 <label htmlFor="title">Titre de l&apos;article</label>
                 <input
                     id="title"
@@ -73,7 +79,9 @@ export default function CreatePage() {
                 {formik.touched.title && formik.errors.title ? (
                     <div className="errorMessage">{formik.errors.title}</div>
                 ) : null}
-                {/* Post category field*/}
+                {/*
+                    Post category field
+                */}
                 <label htmlFor="category">Catégorie</label>
                 <select
                     id="category"
@@ -90,7 +98,9 @@ export default function CreatePage() {
                     <div className="errorMessage">{formik.errors.category}</div>
                 ) : null}
 
-                {/* Post cover image field*/}
+                {/*
+                    Post cover image field
+                */}
                 <label htmlFor="coverImage">Illustration</label>
                 <input
                     id="coverImage"
@@ -106,7 +116,9 @@ export default function CreatePage() {
                     </div>
                 ) : null}
 
-                {/* Post cover image alt field*/}
+                {/*
+                    Post cover image alt field
+                */}
                 <label htmlFor="coverImageAlt">
                     Description de l&apos;illustation
                 </label>
@@ -124,7 +136,9 @@ export default function CreatePage() {
                     </div>
                 ) : null}
 
-                {/* Post content field*/}
+                {/*
+                    Post content field
+                */}
                 <label htmlFor="content">Contenu</label>
                 <textarea
                     id="content"

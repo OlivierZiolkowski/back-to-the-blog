@@ -80,7 +80,7 @@ L'administrateur est capable de :
 
 - **Firebase** :
   - Création d'un projet sous Firebase ;
-  - Implémentation des données avec "Firestore Database" (NoSQL);
+  - Ajout & création de données dans FireStore (NoSQL) ;
   - Authtentification par e-mail / password via "Authentification";
 
 - **Vercel App** :
