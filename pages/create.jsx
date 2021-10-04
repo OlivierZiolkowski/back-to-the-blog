@@ -1,11 +1,17 @@
 // Functions & components
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useRouter } from "next/router";
+import { createPost } from "@lib/firebase";
+import { useState } from "react";
 
 // Styles & assets
 import styles from "@styles/create.module.scss";
 
 export default function CreatePage() {
+    const router = useRouter();
+    const [isLoading, setIsLoading] = useState(false);
+
     const formik = useFormik({
         initialValues: {
             title: "",
@@ -35,7 +41,18 @@ export default function CreatePage() {
             ),
         }),
         onSubmit: (values) => {
-            alert(JSON.stringify(values, null, 2));
+            // console.log(typeof values);
+            // console.log(values);
+            setIsLoading(true);
+            createPost(values)
+                .then(() => {
+                    setIsLoading(false);
+                    router.push("/");
+                })
+                .catch((err) => {
+                    alert(err);
+                    setIsLoading(false);
+                });
         },
     });
 
@@ -64,6 +81,7 @@ export default function CreatePage() {
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                 >
+                    <option value=""></option>
                     <option value="passé">Passé</option>
                     <option value="présent">Présent</option>
                     <option value="futur">Futur</option>
