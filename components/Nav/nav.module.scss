@@ -1,0 +1,80 @@
+@import "../../styles/styles.scss";
+
+.navbar {
+    // Media queries
+    background-color: $c-first;
+    @include mobile {
+        display: none;
+        position: absolute;
+        top: 96px;
+        right: 0;
+        width: 80%;
+        height: calc(100vh - 96px);
+        border-left: solid 2px $c-red;
+        z-index: 2;
+    }
+
+    @include tablet {
+        display: block;
+        position: relative;
+        top: 0;
+        right: 0;
+        height: 100%;
+        box-shadow: none;
+        border-left: none;
+    }
+
+    & > ul {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        list-style-type: none;
+        text-transform: uppercase;
+        height: 100%;
+        @include mobile {
+            flex-flow: column nowrap;
+        }
+        @include tablet {
+            flex-flow: row nowrap;
+        }
+
+        a {
+            text-decoration: none;
+            color: $c-blue;
+            &:visited {
+                color: $c-blue;
+            }
+        }
+
+        li {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            @include mobile {
+                padding: 4px 0px;
+                font-size: 24px;
+                margin-bottom: 8px;
+                border-bottom: solid 2px $c-blue;
+                height: 96px;
+            }
+            @include tablet {
+                padding: 0px 16px;
+                font-size: 16px;
+                border-bottom: none;
+            }
+
+            @include desktop {
+                &:hover {
+                    border-bottom: solid 2px $c-blue;
+                }
+            }
+        }
+    }
+}
+
+.navbarVisible {
+    composes: navbar;
+    @include mobile {
+        display: block;
+    }
+}

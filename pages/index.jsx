@@ -2,6 +2,7 @@
 import styles from "@styles/index.module.scss";
 // Components
 import { ArticleCard } from "@components";
+import { Layout } from "@components";
 import Link from "next/link";
 // Functions
 import { getPosts } from "@lib/firebase";
@@ -13,22 +14,24 @@ import { getPosts } from "@lib/firebase";
 */
 export default function Homepage({ posts }) {
     return (
-        <section className={styles.lastArticlesSection}>
-            {posts.slice(0, 3).map((post) => {
-                return (
-                    <Link key={post.title} href={`/article/${post.slug}`}>
-                        <a>
-                            <ArticleCard
-                                title={post.title}
-                                category={post.category}
-                                picture={post.coverImage}
-                                date={post.dateCreated}
-                            />
-                        </a>
-                    </Link>
-                );
-            })}
-        </section>
+        <Layout>
+            <section className={styles.lastArticlesSection}>
+                {posts.slice(0, 3).map((post) => {
+                    return (
+                        <Link key={post.title} href={`/article/${post.slug}`}>
+                            <a>
+                                <ArticleCard
+                                    title={post.title}
+                                    category={post.category}
+                                    picture={post.coverImage}
+                                    date={post.dateCreated}
+                                />
+                            </a>
+                        </Link>
+                    );
+                })}
+            </section>
+        </Layout>
     );
 }
 
