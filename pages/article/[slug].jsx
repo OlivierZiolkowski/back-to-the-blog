@@ -10,7 +10,19 @@ import styles from "@styles/post.module.scss";
 
 export default function PostPage({ post }) {
     const router = useRouter();
-    const { slug } = router.query;
+
+    // Check if post 'Object' receives one or more property
+    const postLength = Object.keys(post).length;
+    // If post is empty, redirect to 404
+    if (postLength === 0 && typeof window !== "undefined") {
+        router.push("/404");
+        return;
+    }
+    // Handle servor error "Cannot read property of..."
+    // If post has no property, return null to redirect user
+    if (postLength === 0) {
+        return null;
+    }
 
     return (
         <Layout>
