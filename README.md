@@ -31,9 +31,10 @@ Les utilisateurs sont capables de :
 
 -   Consulter une liste d'articles sélectionnés sur la page d'accueil ✅
 -   Consulter un article ✅
+-   S'identifier et créer un article à publier directement par l'interface ✅
+-   Créer un compte et proposer des articles à la rédaction du blog (prochainement 🤙)
 -   Consulter une page comprenant les articles selon la catégorie sélectionnée (prochainement 🤙)
 -   Laisser un commentaire sur la page d'un article (prochainement 🤙)
--   S'identifier et créer un article à publier directement par l'interface (prochainement 🤙)
 
 L'administrateur est capable de :
 - Rédiger un nouvel article ✅
@@ -41,7 +42,19 @@ L'administrateur est capable de :
 
 ### Screenshots
 
-À venir !
+**Homepage - utilisateur connecté**
+
+Utilisateur connecté visible avec les icônes d'outils disponbiles dnas la barre de navigation
+![Homepage](./docs/screenshots/signInHomepage.jpg)
+
+**Article - utilisateur non connecté**
+![Post](docs/screenshots/signedOutArticle.jpg)
+
+**Page de connexion**
+![signInPage](docs/screenshots/signIn.jpg)
+
+**Page de rédaction d'un nouvel article**
+![writePost](docs/screenshots/writePost.jpg)
 
 ### Liens
 
@@ -74,15 +87,15 @@ L'administrateur est capable de :
  - **Next.js** :
    - Utilisation du framework Next.js
    - Mise en place du projet et de son architecture (dossier Pages pour implémenter le routage de l'application) ;
-   - Utilisation des hooks `getServerSideProps()` et `getStaticProps()` pour faire des appels de données dynamiques et / ou statiques ;
+   - Utilisation des hooks `getServerSideProps()` et `getStaticProps()` pour faire des appels de données dynamiques et / ou statiques ;*
+   - Utyilisation des commandes de routage et de liens pour parfaire la navigation ;
    - Implémentation des composants Next.js pour le référencement et l'optimisation du contenu ;
-   - Utilisation de l'optimisation d'images avec le composant `next/image` permettant un chargement de l'image ;
-   - Utilisation des outils de routage Next.js pour naviguer dans l'application.
+   - Utilisation de l'optimisation d'images avec le composant `next/image` permettant un chargement de l'image.
 
 - **Firebase** :
   - Création d'un projet sous Firebase ;
   - Ajout & création de données dans FireStore (NoSQL) ;
-  - Authtentification par e-mail / password via "Authentification";
+  - Authtentification par e-mail / password via "Authentication";
 
 - **Vercel App** :
   - Hébergement de l'application ;

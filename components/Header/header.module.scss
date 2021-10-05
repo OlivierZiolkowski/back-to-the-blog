@@ -20,24 +20,6 @@
     align-items: center;
 }
 
-.search {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: flex-end;
-    & > input {
-        height: 24px;
-        margin-right: 8px;
-        transition: width 0.5s ease;
-        width: 0;
-        border: none;
-
-        &:focus {
-            outline: none;
-        }
-    }
-}
-
 .menuLogo {
     @include mobile {
         display: block;
@@ -46,4 +28,11 @@
     @include tablet {
         display: none;
     }
+}
+
+.command {
+    background-color: $c-first;
+    padding: 0;
+    border: none;
+    margin-left: 8px;
 }
