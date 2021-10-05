@@ -6,7 +6,7 @@ Dans ce projet, j'ai souhaité me tourner vers le Framework **[Next.js](https://
 
 La thématique sera autour de la trilogie "Retour vers le futur" (clin d'oeil à la promo McFly O'Clock 2020 😉) et aux acteurs du film mais je ne pense pas qu'ils viendront un jour sur ce repo mais sait-on jamais 😅 !
 
-**CE PROJET EN COURS DE CONSTRUCTION** - dernière mise à jour de ce document : 04 octobre 2021
+**CE PROJET EN COURS DE CONSTRUCTION** - dernière mise à jour de ce document : 05 octobre 2021
 
 ## Sommaire
 
@@ -30,7 +30,7 @@ La thématique sera autour de la trilogie "Retour vers le futur" (clin d'oeil à
 Les utilisateurs sont capables de :
 
 -   Consulter une liste d'articles sélectionnés sur la page d'accueil ✅
--   Consulter un article (prochainement 🤙)
+-   Consulter un article ✅
 -   Consulter une page comprenant les articles selon la catégorie sélectionnée (prochainement 🤙)
 -   Laisser un commentaire sur la page d'un article (prochainement 🤙)
 -   S'identifier et créer un article à publier directement par l'interface (prochainement 🤙)
@@ -76,6 +76,7 @@ L'administrateur est capable de :
    - Mise en place du projet et de son architecture (dossier Pages pour implémenter le routage de l'application) ;
    - Utilisation des hooks `getServerSideProps()` et `getStaticProps()` pour faire des appels de données dynamiques et / ou statiques ;
    - Implémentation des composants Next.js pour le référencement et l'optimisation du contenu ;
+   - Utilisation de l'optimisation d'images avec le composant `next/image` permettant un chargement de l'image ;
    - Utilisation des outils de routage Next.js pour naviguer dans l'application.
 
 - **Firebase** :
@@ -93,8 +94,8 @@ L'administrateur est capable de :
 
 ### Difficultés rencontrées
 
-- **Next.js** :
-  - Projet en cours d'initialisation, aucune difficulté rencontrée pour le moment 😅
+- **Firebase** :
+  - Cette application tourne sous Firebase version 9 et utilise le cloud FireStore pour récupérer des données. Je me suis un peu perdu pour essayer de trouver la meilleure solution pour récupérer les informations relatives à un seul article selon son `slug`. Découvrant le NoSQL et Firebase simultanément, il semble que, sans un ID, on ne puisse récupérer une donnée unique. J'ai donc fait une requête de plusieurs documents que je reserre avec deux paramètres : le document doit avoir un slug égal à celui passé en paramètre de ma fonction et le document doit être considéré comme mis en ligne. Je renvoie un résultat sous forme d'objet que je peux ensuite utiliser dans la page d'article.
 
 ### Ressources
 
