@@ -10,6 +10,12 @@ import { useAuth } from "@contexts/auth";
 import styles from "@styles/create.module.scss";
 
 export default function CreatePage() {
+    // Create a new router from 'next-router'
+    const router = useRouter();
+    // Create a 'loading' state when user creates a new post
+    const [isLoading, setIsLoading] = useState(false);
+
+    const [user, userLoading] = useAuth();
     // Formik parameters for new post creation form
     const formik = useFormik({
         initialValues: {
@@ -55,13 +61,6 @@ export default function CreatePage() {
                 });
         },
     });
-    // Create a new router from 'next-router'
-    const router = useRouter();
-    // Create a 'loading' state when user creates a new post
-    const [isLoading, setIsLoading] = useState(false);
-
-    const [user, userLoading] = useAuth();
-    console.log(user, userLoading);
 
     if (userLoading) {
         return null;
