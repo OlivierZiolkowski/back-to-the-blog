@@ -1,0 +1,40 @@
+@import "@styles/styles.scss";
+
+.footer {
+    height: 50vh;
+    width: 100%;
+    background-color: $c-fourth;
+    color: $c-first;
+    position: relative;
+    a {
+        color: $c-first;
+        text-decoration: none;
+    }
+}
+
+.footerBackground {
+    background: center/cover no-repeat url("https://picsum.photos/id/1031/1440");
+    height: 100%;
+    width: 100%;
+    opacity: 0.2;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.footerInformations {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: space-around;
+    width: 300px;
+    height: 100%;
+    margin: auto;
+}
+
+.socialMedias {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    width: 50%;
+}
