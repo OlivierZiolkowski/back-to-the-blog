@@ -53,3 +53,11 @@ button {
   text-transform: uppercase;
 }
 
+a {
+  text-decoration: none;
+  color: $c-fourth;
+  & :visited {
+    color: $c-fourth;
+  }
+}
+

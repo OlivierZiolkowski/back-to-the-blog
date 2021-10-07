@@ -27,20 +27,25 @@
         }
     }
 
-    // Defines rules ofr each article card
+    // Defines rules for each article card
+
+    // 'a' becomes block for respect flex rules
+    a {
+        display: block;
+        width: calc(100% - 10px);
+        @include tablet {
+            width: calc(50% - 24px);
+        }
+        @include desktop {
+            width: calc(33% - 24px);
+        }
+    }
     article {
         display: flex;
         flex-flow: column nowrap;
         align-items: center;
-        width: calc(100% - 10px);
 
-        @include tablet {
-            width: calc(50% - 24px);
-        }
 
-        @include desktop {
-            width: calc(33% - 24px);
-        }
 
         // Block with image & category tag
         & > div:first-child {
@@ -68,6 +73,10 @@
             // Title tag
             & h2 {
                 margin-bottom: 4px;
+                max-height: 96px;
+                font-size: 22px;
+                display: flex;
+                align-items: center;
             }
 
             // Date tag
