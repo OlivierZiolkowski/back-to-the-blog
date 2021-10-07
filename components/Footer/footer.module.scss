@@ -1,5 +1,6 @@
 @import "@styles/styles.scss";
 
+// Defines rules for footer block
 .footer {
     height: 50vh;
     width: 100%;
@@ -12,6 +13,7 @@
     }
 }
 
+// Use a static image under the content of the footer
 .footerBackground {
     background: center/cover no-repeat url("https://picsum.photos/id/1031/1440");
     height: 100%;
@@ -22,6 +24,7 @@
     left: 0;
 }
 
+// Rules for the content of the footer
 .footerInformations {
     display: flex;
     flex-flow: column wrap;
@@ -32,6 +35,7 @@
     margin: auto;
 }
 
+// Rules for social link icons block
 .socialMedias {
     display: flex;
     flex-flow: row nowrap;
