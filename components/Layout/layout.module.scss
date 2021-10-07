@@ -1,0 +1,9 @@
+@import '@styles/styles.scss';
+
+.layout {
+    display: flex;
+    flex-flow: column nowrap;
+    footer {
+        align-self:flex-end;
+    }
+}
