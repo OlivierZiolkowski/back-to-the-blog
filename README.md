@@ -6,7 +6,7 @@ Dans ce projet, j'ai souhaité me tourner vers le Framework **[Next.js](https://
 
 La thématique sera autour de la trilogie "Retour vers le futur" (clin d'oeil à la promo McFly O'Clock 2020 😉) et aux acteurs du film mais je ne pense pas qu'ils viendront un jour sur ce repo mais sait-on jamais 😅 !
 
-**CE PROJET EN COURS DE CONSTRUCTION** - dernière mise à jour de ce document : 05 octobre 2021
+**CE PROJET EN COURS DE CONSTRUCTION** - dernière mise à jour de ce document : 07 octobre 2021
 
 ## Sommaire
 
@@ -32,8 +32,8 @@ Les utilisateurs sont capables de :
 -   Consulter une liste d'articles sélectionnés sur la page d'accueil ✅
 -   Consulter un article ✅
 -   S'identifier et créer un article à publier directement par l'interface ✅
+-   Consulter une page comprenant les articles selon la catégorie sélectionnée ✅
 -   Créer un compte et proposer des articles à la rédaction du blog (prochainement 🤙)
--   Consulter une page comprenant les articles selon la catégorie sélectionnée (prochainement 🤙)
 -   Laisser un commentaire sur la page d'un article (prochainement 🤙)
 
 L'administrateur est capable de :
@@ -77,10 +77,6 @@ Utilisateur connecté visible avec les icônes d'outils disponbiles dnas la barr
 -   [Babeljs](https://babeljs.io/) - Transpiler
 -   [ESLint](https://eslint.org/) - Linter
 -   [Prettier](https://prettier.io/) - Formatter
--   Semantic HTML5 markup
--   Mobile-first workflow
--   Flexbox
--   CSS Grid
 
 ### Ce que j'ai appris
 
