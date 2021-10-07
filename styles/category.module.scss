@@ -1,0 +1,80 @@
+@import '@styles/styles.scss';
+
+.categoryPage {
+    max-width: 1440px;
+    padding: 24px;
+    margin: 0;
+
+    // Rules for main title
+    h1 {
+        font-size: 20px;
+        margin-bottom: 12px;
+        @include tablet {
+            font-size: 36px;
+        }
+    }
+
+    // Rules for articles container
+    section {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+
+        @include tablet {
+            flex-flow: row wrap;
+            justify-content: flex-start;
+            gap: 24px 36px;
+        }
+    }
+
+    // Defines rules ofr each article card
+    article {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        width: calc(100% - 10px);
+
+        @include tablet {
+            width: calc(50% - 24px);
+        }
+
+        @include desktop {
+            width: calc(33% - 24px);
+        }
+
+        // Block with image & category tag
+        & > div:first-child {
+            position: relative;
+            width: 100%;
+            height: 250px;
+
+            // Category tag
+            & > span {
+                position: absolute;
+                color: $c-first;
+                background-color: $c-red;
+                padding: 4px 8px;
+                bottom: 0;
+                left: 0;
+                font-weight: 700;
+                font-size: 12px;
+            }
+        }
+        
+        // Block with post infos (title & first lines of article)
+        & > div:last-child {
+            padding: 12px;
+
+            // Title tag
+            & h2 {
+                margin-bottom: 4px;
+            }
+
+            // Date tag
+            & p:last-child {
+                color: $c-third;
+                padding: 4px 0 0 0;
+            }
+        }
+    }
+}
