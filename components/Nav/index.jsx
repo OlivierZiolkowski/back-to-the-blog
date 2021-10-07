@@ -8,26 +8,24 @@ export default function Nav({ visible }) {
             id="navbar"
         >
             <ul>
-                <Link href="/">
+                <Link href="/categorie/passé">
                     <a>
                         <li>passé</li>
                     </a>
                 </Link>
-                <Link href="/">
+                <Link href="/categorie/présent">
                     <a>
                         <li>présent</li>
                     </a>
                 </Link>
-                <Link href="/">
+                <Link href="/categorie/futur">
                     <a>
                         <li>futur</li>
                     </a>
                 </Link>
-                <Link href="/">
-                    <a>
-                        <li>à propos</li>
-                    </a>
-                </Link>
+                <a href="https://github.com/OlivierZiolkowski/back-to-the-blog">
+                    <li>à propos</li>
+                </a>
             </ul>
         </nav>
     );

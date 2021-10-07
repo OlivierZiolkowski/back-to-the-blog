@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect, useContext } from "react";
 import { onAuthStateChange } from "@lib/firebase";
 
-const AuthContext = createContext({ user: null, userLoagin: true });
+const AuthContext = createContext({ user: null, userLoading: true });
 
 export const AuthProvider = ({ children }) => {
     const [userLoading, setUserLoading] = useState(true);
