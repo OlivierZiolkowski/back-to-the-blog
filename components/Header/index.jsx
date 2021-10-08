@@ -1,7 +1,7 @@
 // Components
 import Image from "next/image";
 import Link from "next/link";
-import Navbar from "../Nav";
+import Navbar from "./Nav";
 import { useState } from "react";
 import { useAuth } from "@contexts/auth";
 import { userSignOut } from "@lib/firebase";
