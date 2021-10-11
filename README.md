@@ -33,8 +33,8 @@ Les utilisateurs sont capables de :
 -   Consulter un article ✅
 -   S'identifier et créer un article à publier directement par l'interface ✅
 -   Consulter une page comprenant les articles selon la catégorie sélectionnée ✅
--   Créer un compte et proposer des articles à la rédaction du blog (prochainement 🤙)
 -   Laisser un commentaire sur la page d'un article (prochainement 🤙)
+-   Créer un compte et proposer des articles à la rédaction du blog (prochainement 🤙)
 
 L'administrateur est capable de :
 - Rédiger un nouvel article ✅
@@ -59,7 +59,7 @@ Utilisateur connecté visible avec les icônes d'outils disponbiles dans la barr
 ### Liens
 
 -   Repo GitHub : [github.com/OlivierZiolkowski](https://github.com/OlivierZiolkowski/back-to-the-blog)
--   Live Site URL : [Déploiement sur Vercel](https://back-to-the-blog-88dad58nk-olivierziolkowski.vercel.app/)
+-   Live Site URL : [Déploiement sur Vercel](https://back-to-the-blog.vercel.app/)
 
 ## Mon procédé
 
