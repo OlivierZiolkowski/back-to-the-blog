@@ -1,5 +1,5 @@
 // Functions
-import { getPostBySlug } from "@lib/firebase";
+import { getPostBySlug, deletePost } from "@lib/firebase";
 import { getFormattedDate } from "@lib/utils";
 // Components
 import { useRouter } from "next/router";
@@ -52,7 +52,18 @@ export default function PostPage({ post }) {
                                         layout="fixed"
                                     />
                                 </button>
-                                <button onClick={() => router.push("/s")}>
+                                <button
+                                    onClick={() => {
+                                        const shouldDeletePost = confirm(
+                                            "Are you sure you want to delete this post ?"
+                                        );
+                                        if (shouldDeletePost) {
+                                            deletePost(post.id).then(() => {
+                                                router.push("/");
+                                            });
+                                        }
+                                    }}
+                                >
                                     <Image
                                         src={deleteIcon}
                                         alt="Supprimer cet article"
