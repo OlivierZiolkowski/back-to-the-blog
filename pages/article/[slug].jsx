@@ -5,11 +5,15 @@ import { getFormattedDate } from "@lib/utils";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { Layout } from "@components";
+import { useAuth } from "@contexts/auth";
 // Styles & assets
 import styles from "@styles/post.module.scss";
+import modifyIcon from "@assets/icons/modifyIcon.svg";
+import deleteIcon from "@assets/icons/deleteIcon.svg";
 
 export default function PostPage({ post }) {
     const router = useRouter();
+    const [user] = useAuth();
 
     // Check if post 'Object' receives one or more property
     const postLength = Object.keys(post).length;
@@ -29,8 +33,36 @@ export default function PostPage({ post }) {
             <article className={styles.postPage}>
                 <div className={styles.postPageHeader}>
                     <div>
-                        <span>{post.category}</span>
-                        <span>{getFormattedDate(post.dateCreated)}</span>
+                        <div>
+                            <span>{post.category}</span>
+                            <span>{getFormattedDate(post.dateCreated)}</span>
+                        </div>
+                        {user && (
+                            <div>
+                                <button
+                                    onClick={() =>
+                                        router.push(`/edit/${post.slug}`)
+                                    }
+                                >
+                                    <Image
+                                        src={modifyIcon}
+                                        alt="Modifier cet article"
+                                        width={24}
+                                        height={24}
+                                        layout="fixed"
+                                    />
+                                </button>
+                                <button onClick={() => router.push("/s")}>
+                                    <Image
+                                        src={deleteIcon}
+                                        alt="Supprimer cet article"
+                                        width={24}
+                                        height={24}
+                                        layout="fixed"
+                                    />
+                                </button>
+                            </div>
+                        )}
                     </div>
                     <h1>{post.title}</h1>
                 </div>
