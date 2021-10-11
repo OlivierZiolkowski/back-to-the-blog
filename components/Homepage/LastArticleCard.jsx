@@ -5,13 +5,13 @@ import { getFormattedDate } from "@lib/utils";
 import PropTypes from "prop-types";
 
 // Assets & styles
-import styles from "./ArticleCard.module.scss";
+import styles from "./LastArticleCard.module.scss";
 
 /*
     This component represent article cards on the top 
     of the homepage.
 */
-export default function ArticleCard({ title, picture, category, date }) {
+export default function LastArticleCard({ title, picture, category, date }) {
     return (
         <article
             className={styles.article}
@@ -30,7 +30,7 @@ export default function ArticleCard({ title, picture, category, date }) {
 }
 
 // Prop-types
-ArticleCard.propTypes = {
+LastArticleCard.propTypes = {
     title: PropTypes.string.isRequired,
     picture: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
