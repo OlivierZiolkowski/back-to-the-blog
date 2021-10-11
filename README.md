@@ -2,11 +2,11 @@
 
 En tant que développeur (junior à l'heure actuelle en 2021), il est toujours utile et intéressant de découvrir de nouvelles technologies et méthodes de travail à acquérir dans mon bagage de connaissances 💼.
 
-Dans ce projet, j'ai souhaité me tourner vers le Framework **[Next.js](https://nextjs.org/)** pour créer un faux blog et m'intéresser de plus près à ce que peut m'apporter l'usage d'un outil orienté vers le référencement et l'optimisation d'une Single-Page Application. J'alimenterais ce blog avec Google Firebase (authentification, données, ...) et faire de l'intégration continue avec Vercel App.
+Dans ce projet, j'ai souhaité me tourner vers l'apprentissage du framework **[Next.js](https://nextjs.org/)** pour créer un faux blog et m'intéresser de plus près à ce que peut m'apporter l'usage d'un outil orienté vers le référencement et l'optimisation d'une Single-Page Application. J'alimenterais ce blog avec Google Firebase (authentification, données, ...) et faire de l'intégration continue avec Vercel App.
 
 La thématique sera autour de la trilogie "Retour vers le futur" (clin d'oeil à la promo McFly O'Clock 2020 😉) et aux acteurs du film mais je ne pense pas qu'ils viendront un jour sur ce repo mais sait-on jamais 😅 !
 
-**CE PROJET EN COURS DE CONSTRUCTION** - dernière mise à jour de ce document : 07 octobre 2021
+**CE PROJET EN COURS DE CONSTRUCTION** - dernière mise à jour de ce document : 11 octobre 2021
 
 ## Sommaire
 
@@ -38,13 +38,13 @@ Les utilisateurs sont capables de :
 
 L'administrateur est capable de :
 - Rédiger un nouvel article ✅
-- Modifier ou supprimer un article publié (prochainement 🤙)
+- Modifier ou supprimer un article publié ✅
 
 ### Screenshots
 
 **Homepage - utilisateur connecté**
 
-Utilisateur connecté visible avec les icônes d'outils disponbiles dnas la barre de navigation
+Utilisateur connecté visible avec les icônes d'outils disponbiles dans la barre de navigation
 ![Homepage](./docs/screenshots/signInHomepage.jpg)
 
 **Article - utilisateur non connecté**
@@ -53,7 +53,7 @@ Utilisateur connecté visible avec les icônes d'outils disponbiles dnas la barr
 **Page de connexion**
 ![signInPage](docs/screenshots/signIn.jpg)
 
-**Page de rédaction d'un nouvel article**
+**Page de rédaction / édition d'un article**
 ![writePost](docs/screenshots/writePost.jpg)
 
 ### Liens
@@ -104,7 +104,8 @@ Utilisateur connecté visible avec les icônes d'outils disponbiles dnas la barr
 ### Difficultés rencontrées
 
 - **Firebase** :
-  - Cette application tourne sous Firebase version 9 et utilise le cloud FireStore pour récupérer des données. Je me suis un peu perdu pour essayer de trouver la meilleure solution pour récupérer les informations relatives à un seul article selon son `slug`. Découvrant le NoSQL et Firebase simultanément, il semble que, sans un ID, on ne puisse récupérer une donnée unique. J'ai donc fait une requête de plusieurs documents que je reserre avec deux paramètres : le document doit avoir un slug égal à celui passé en paramètre de ma fonction et le document doit être considéré comme mis en ligne. Je renvoie un résultat sous forme d'objet que je peux ensuite utiliser dans la page d'article.
+  - Cette application tourne sous Firebase version 9 et utilise le cloud FireStore pour récupérer des données. Je me suis un peu perdu pour essayer de trouver la meilleure solution pour récupérer les informations relatives à un seul article selon son `slug`. Découvrant le NoSQL et Firebase simultanément, il semble que, sans un ID, on ne puisse récupérer une donnée unique. J'ai donc fait une requête de plusieurs documents que je reserre avec deux paramètres : le document doit avoir un slug égal à celui passé en paramètre de ma fonction et le document doit être considéré comme mis en ligne. Je renvoie un résultat sous forme d'objet que je peux ensuite utiliser dans la page d'article. **EDIT[11/10/2021]**: il est effectivement possible de récupérer l'ID auto-généré d'un document en l'intégrant à mon post.
+  - Firebase étant du NoSQL, j'ai encore des "réflexes" de création de tables en SQL et je me suis confronté lors de la construction de ce projet à devoir réfléchir différemment lors de la construction de ma base de données en ligne notamment sur les liens entre les tables en SQL et la constitution d'une suite de collections indépendantes en NoSQL.
 
 ### Ressources
 
