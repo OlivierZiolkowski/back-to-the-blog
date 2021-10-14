@@ -13,6 +13,13 @@
       input {
         margin-bottom: 16px;
       }
+
+      input ~ img {
+        width: 200px;
+        height: 100px;
+        object-fit: cover;
+        margin-bottom: 20px;
+    }
   
       textarea {
         height: 300px;

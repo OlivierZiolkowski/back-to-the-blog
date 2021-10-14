@@ -6,6 +6,7 @@ import { Layout } from "@components";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import styles from "@styles/edit.module.scss";
+import { previewFile, slugifyTitle } from "@lib/utils";
 
 export default function EditPage({ post }) {
     const router = useRouter();
@@ -17,7 +18,7 @@ export default function EditPage({ post }) {
         initialValues: {
             title: post.title,
             category: post.category,
-            coverImage: post.coverImage,
+            coverImage: null,
             coverImageAlt: post.coverImageAlt,
             content: post.content,
             id: post.id,
@@ -33,9 +34,7 @@ export default function EditPage({ post }) {
                     "Catégorie choisie invalide"
                 )
                 .required("Veuillez choisir une catégorie"),
-            coverImage: Yup.string()
-                .url("Le chemin doit être une URL vers une image")
-                .required("Veuillez ajouter un lien vers une illustration"),
+            coverImage: Yup.mixed(),
             coverImageAlt: Yup.string().required(
                 "Veillez ajouter une description de l'illustration"
             ),
@@ -47,8 +46,11 @@ export default function EditPage({ post }) {
         // Defines what's happened on form submission
         onSubmit: (values) => {
             setIsLoading(true);
-            console.log(values);
-            updatePost(values)
+
+            const imageFile = document.getElementById("coverImage").files[0];
+            const imageName = slugifyTitle(values.title);
+
+            updatePost(values, imageFile, imageName)
                 .then(() => {
                     setIsLoading(false);
                     alert("Votre article a bien été mis à jour");
@@ -75,9 +77,8 @@ export default function EditPage({ post }) {
             <div className={styles.EditPage}>
                 <form onSubmit={formik.handleSubmit}>
                     <h1>Éditer le post : {post.title}</h1>
-                    {/*
-                        Post title field
-                    */}
+
+                    {/* Post title field */}
                     <label htmlFor="title">Titre de l&apos;article</label>
                     <input
                         id="title"
@@ -92,9 +93,8 @@ export default function EditPage({ post }) {
                             {formik.errors.title}
                         </div>
                     ) : null}
-                    {/*
-                        Post category field
-                    */}
+
+                    {/* Post category field */}
                     <label htmlFor="category">Catégorie</label>
                     <select
                         id="category"
@@ -112,26 +112,35 @@ export default function EditPage({ post }) {
                             {formik.errors.category}
                         </div>
                     ) : null}
-                    {/*
-                        Post cover image field
-                    */}
+
+                    {/* Post cover image field */}
                     <label htmlFor="coverImage">Illustration</label>
                     <input
                         id="coverImage"
                         name="coverImage"
-                        type="text"
-                        onChange={formik.handleChange}
+                        type="file"
+                        accept="image/jpg"
+                        onChange={(event) => {
+                            formik.setFieldValue(
+                                "file",
+                                event.currentTarget.files[0]
+                            );
+                            previewFile();
+                        }}
                         onBlur={formik.handleBlur}
                         value={formik.values.coverImage}
                     />
+
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img id="previewImg" src={post.coverImage} alt="preview" />
+
                     {formik.touched.coverImage && formik.errors.coverImage ? (
                         <div className="errorMessage">
                             {formik.errors.coverImage}
                         </div>
                     ) : null}
-                    {/*
-                        Post cover image alt field
-                    */}
+
+                    {/* Post cover image alt field */}
                     <label htmlFor="coverImageAlt">
                         Description de l&apos;illustation
                     </label>
@@ -149,9 +158,8 @@ export default function EditPage({ post }) {
                             {formik.errors.coverImageAlt}
                         </div>
                     ) : null}
-                    {/*
-                        Post content field
-                    */}
+
+                    {/* Post content field */}
                     <label htmlFor="content">Contenu</label>
                     <textarea
                         id="content"
@@ -165,6 +173,7 @@ export default function EditPage({ post }) {
                             {formik.errors.content}
                         </div>
                     ) : null}
+
                     <button type="submit">Mettre à jour</button>
                 </form>
             </div>

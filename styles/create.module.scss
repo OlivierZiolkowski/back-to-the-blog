@@ -20,11 +20,11 @@
       }
 
       input ~ img {
-          border: solid 1px blue;
           width: 200px;
           height: 100px;
           display: none;
           object-fit: cover;
+          margin-bottom: 20px;
       }
   
       textarea {

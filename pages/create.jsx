@@ -179,6 +179,7 @@ export default function CreatePage() {
                             {formik.errors.content}
                         </div>
                     ) : null}
+
                     <button type="submit">Créer</button>
                 </form>
             </div>
