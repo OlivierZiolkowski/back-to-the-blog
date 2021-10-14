@@ -3,9 +3,10 @@ import { Layout } from "@components";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useRouter } from "next/router";
-import { createPost } from "@lib/firebase";
+import { createPost, uploadImage } from "@lib/firebase";
 import { useState } from "react";
 import { useAuth } from "@contexts/auth";
+import { slugifyTitle } from "@lib/utils";
 
 // Styles & assets
 import styles from "@styles/create.module.scss";
@@ -22,7 +23,7 @@ export default function CreatePage() {
         initialValues: {
             title: "",
             category: "",
-            coverImage: "",
+            coverImage: null,
             coverImageAlt: "",
             content: "",
         },
@@ -37,9 +38,7 @@ export default function CreatePage() {
                     "Catégorie choisie invalide"
                 )
                 .required("Veuillez choisir une catégorie"),
-            coverImage: Yup.string()
-                .url("Le chemin doit être une URL vers une image")
-                .required("Veuillez ajouter un lien vers une illustration"),
+            coverImage: Yup.mixed(),
             coverImageAlt: Yup.string().required(
                 "Veillez ajouter une description de l'illustration"
             ),
@@ -50,11 +49,15 @@ export default function CreatePage() {
         // Defines what's happened on form submission
         onSubmit: (values) => {
             setIsLoading(true);
-            createPost(values)
+
+            const imageFile = document.getElementById("coverImage").files[0];
+            const imageName = slugifyTitle(values.title);
+
+            createPost(values, imageFile, imageName)
                 .then(() => {
                     setIsLoading(false);
                     alert("Votre article a bien été créé");
-                    router.push("/");
+                    // router.push("/");
                 })
                 .catch((err) => {
                     alert(err);
@@ -121,8 +124,14 @@ export default function CreatePage() {
                     <input
                         id="coverImage"
                         name="coverImage"
-                        type="text"
-                        onChange={formik.handleChange}
+                        type="file"
+                        accept="image/jpg"
+                        onChange={(event) => {
+                            formik.setFieldValue(
+                                "file",
+                                event.currentTarget.files[0]
+                            );
+                        }}
                         onBlur={formik.handleBlur}
                         value={formik.values.coverImage}
                     />
