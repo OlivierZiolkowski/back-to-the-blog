@@ -6,7 +6,7 @@ Dans ce projet, j'ai souhaité me tourner vers l'apprentissage du framework **[N
 
 La thématique sera autour de la trilogie "Retour vers le futur" (clin d'oeil à la promo McFly O'Clock 2020 😉) et aux acteurs du film mais je ne pense pas qu'ils viendront un jour sur ce repo mais sait-on jamais 😅 !
 
-**CE PROJET EN COURS DE CONSTRUCTION** - dernière mise à jour de ce document : 11 octobre 2021
+**CE PROJET EN COURS DE CONSTRUCTION** - dernière mise à jour de ce document : 14 octobre 2021
 
 ## Sommaire
 
@@ -92,6 +92,7 @@ Utilisateur connecté visible avec les icônes d'outils disponbiles dans la barr
   - Création d'un projet sous Firebase ;
   - Ajout & création de données dans FireStore (NoSQL) ;
   - Authtentification par e-mail / password via "Authentication";
+  - Stockage des images sur le serveur Firebase Storage.
 
 - **Vercel App** :
   - Hébergement de l'application ;
@@ -100,6 +101,9 @@ Utilisateur connecté visible avec les icônes d'outils disponbiles dans la barr
 - **Formik & Yup** :
   - Création d'un formulaire via Formik qui offre un gain de temps avec des méthodes permettant de récupérer et vérifier le contenu d'un champ de formulaire ;
   - En complément, Yup vient valider chaque champ selon un pattern défini en amont du formulaire.
+
+- **Autres** :
+  - Utiliser le champ de formulaire de type "file" et l'objet File pour récupérer un fichier.
 
 ### Difficultés rencontrées
 
@@ -115,6 +119,7 @@ Utilisateur connecté visible avec les icônes d'outils disponbiles dans la barr
 -   [Tutoriel de Ashlee M. Boyer pour créer un blog de base via Next.js et Firebase 👍](https://ashleemboyer.com/series/nextjs-firebase-blog)
 -   [StackOverflow évidemment 😅](https://stackoverflow.com/)
 -   [Inspiration graphique - Louis Magazine 👌](https://www.louismagazine.com/)
+-   [Récupérer un fichier avec File - MDN](https://developer.mozilla.org/fr/docs/Web/API/File)
 
 ## Auteur
 
