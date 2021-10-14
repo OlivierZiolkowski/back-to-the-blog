@@ -3,10 +3,12 @@ import { Layout } from "@components";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useRouter } from "next/router";
-import { createPost, uploadImage } from "@lib/firebase";
-import { useState } from "react";
+import { createPost } from "@lib/firebase";
+import { useEffect, useState } from "react";
 import { useAuth } from "@contexts/auth";
-import { slugifyTitle } from "@lib/utils";
+import { slugifyTitle, previewFile } from "@lib/utils";
+import noPreview from "@assets/noPreview.jpg";
+import Image from "next/image";
 
 // Styles & assets
 import styles from "@styles/create.module.scss";
@@ -16,8 +18,9 @@ export default function CreatePage() {
     const router = useRouter();
     // Create a 'loading' state when user creates a new post
     const [isLoading, setIsLoading] = useState(false);
-
+    // Check if user is autehnticated
     const [user, userLoading] = useAuth();
+
     // Formik parameters for new post creation form
     const formik = useFormik({
         initialValues: {
@@ -97,6 +100,7 @@ export default function CreatePage() {
                             {formik.errors.title}
                         </div>
                     ) : null}
+
                     {/*
                         Post category field
                     */}
@@ -117,6 +121,7 @@ export default function CreatePage() {
                             {formik.errors.category}
                         </div>
                     ) : null}
+
                     {/*
                         Post cover image field
                     */}
@@ -131,15 +136,21 @@ export default function CreatePage() {
                                 "file",
                                 event.currentTarget.files[0]
                             );
+                            previewFile();
                         }}
                         onBlur={formik.handleBlur}
                         value={formik.values.coverImage}
                     />
+
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img id="previewImg" alt="preview" />
+
                     {formik.touched.coverImage && formik.errors.coverImage ? (
                         <div className="errorMessage">
                             {formik.errors.coverImage}
                         </div>
                     ) : null}
+
                     {/*
                         Post cover image alt field
                     */}

@@ -18,6 +18,14 @@
       select {
         margin-bottom: 16px;
       }
+
+      input ~ img {
+          border: solid 1px blue;
+          width: 200px;
+          height: 100px;
+          display: none;
+          object-fit: cover;
+      }
   
       textarea {
         height: 300px;
