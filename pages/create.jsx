@@ -4,11 +4,9 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useRouter } from "next/router";
 import { createPost } from "@lib/firebase";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useAuth } from "@contexts/auth";
 import { slugifyTitle, previewFile } from "@lib/utils";
-import noPreview from "@assets/noPreview.jpg";
-import Image from "next/image";
 
 // Styles & assets
 import styles from "@styles/create.module.scss";
@@ -16,8 +14,10 @@ import styles from "@styles/create.module.scss";
 export default function CreatePage() {
     // Create a new router from 'next-router'
     const router = useRouter();
+
     // Create a 'loading' state when user creates a new post
     const [isLoading, setIsLoading] = useState(false);
+
     // Check if user is autehnticated
     const [user, userLoading] = useAuth();
 
@@ -69,10 +69,10 @@ export default function CreatePage() {
         },
     });
 
+    // Redirect to 404 if user is not authentified
     if (userLoading) {
         return null;
     }
-
     if (!user && typeof window !== "undefined") {
         router.push("./");
         return null;
@@ -83,9 +83,8 @@ export default function CreatePage() {
             <div className={styles.CreatePage}>
                 <form onSubmit={formik.handleSubmit}>
                     <h1>Écrire un nouvel article</h1>
-                    {/*
-                        Post title field
-                    */}
+
+                    {/* Post title field */}
                     <label htmlFor="title">Titre de l&apos;article</label>
                     <input
                         id="title"
@@ -101,9 +100,7 @@ export default function CreatePage() {
                         </div>
                     ) : null}
 
-                    {/*
-                        Post category field
-                    */}
+                    {/* Post category field */}
                     <label htmlFor="category">Catégorie</label>
                     <select
                         id="category"
@@ -122,9 +119,7 @@ export default function CreatePage() {
                         </div>
                     ) : null}
 
-                    {/*
-                        Post cover image field
-                    */}
+                    {/* Post cover image field */}
                     <label htmlFor="coverImage">Illustration</label>
                     <input
                         id="coverImage"
@@ -151,9 +146,7 @@ export default function CreatePage() {
                         </div>
                     ) : null}
 
-                    {/*
-                        Post cover image alt field
-                    */}
+                    {/* Post cover image alt field */}
                     <label htmlFor="coverImageAlt">
                         Description de l&apos;illustation
                     </label>
@@ -171,9 +164,8 @@ export default function CreatePage() {
                             {formik.errors.coverImageAlt}
                         </div>
                     ) : null}
-                    {/*
-                        Post content field
-                    */}
+
+                    {/* Post content field */}
                     <label htmlFor="content">Contenu</label>
                     <textarea
                         id="content"
