@@ -73,10 +73,14 @@
             // Title tag
             & h2 {
                 margin-bottom: 4px;
-                max-height: 96px;
+                height: auto;
                 font-size: 22px;
                 display: flex;
                 align-items: center;
+
+                @include tablet {
+                    height: 72px;
+                }
             }
 
             // Date tag
