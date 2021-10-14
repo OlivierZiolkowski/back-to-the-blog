@@ -57,7 +57,7 @@ export default function CreatePage() {
                 .then(() => {
                     setIsLoading(false);
                     alert("Votre article a bien été créé");
-                    // router.push("/");
+                    router.push("/");
                 })
                 .catch((err) => {
                     alert(err);
