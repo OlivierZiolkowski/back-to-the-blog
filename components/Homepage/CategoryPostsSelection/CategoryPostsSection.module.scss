@@ -3,10 +3,14 @@
 .section {
     background-color: $c-second;
     width: 90%;
-    margin: 3rem auto;
+    margin: 1rem auto;
     padding: 1rem;
     display: flex;
     flex-flow: column nowrap;
+
+    @include tablet {
+        margin: 1.5rem auto;
+    }
 }
 
 .header {
