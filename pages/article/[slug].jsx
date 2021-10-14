@@ -4,6 +4,7 @@ import { getFormattedDate } from "@lib/utils";
 // Components
 import { useRouter } from "next/router";
 import Image from "next/image";
+import Head from "next/head";
 import { Layout } from "@components";
 import { useAuth } from "@contexts/auth";
 // Styles & assets
@@ -29,65 +30,76 @@ export default function PostPage({ post }) {
     }
 
     return (
-        <Layout>
-            <article className={styles.postPage}>
-                <div className={styles.postPageHeader}>
-                    <div>
+        <>
+            <Head>
+                <title>{post.title} | Back to the blog !</title>
+                <meta
+                    name="viewport"
+                    content="initial-scale=1.0, width=device-width"
+                />
+            </Head>
+            <Layout>
+                <article className={styles.postPage}>
+                    <div className={styles.postPageHeader}>
                         <div>
-                            <span>{post.category}</span>
-                            <span>{getFormattedDate(post.dateCreated)}</span>
-                        </div>
-                        {user && (
                             <div>
-                                <button
-                                    onClick={() =>
-                                        router.push(`/edit/${post.slug}`)
-                                    }
-                                >
-                                    <Image
-                                        src={modifyIcon}
-                                        alt="Modifier cet article"
-                                        width={24}
-                                        height={24}
-                                        layout="fixed"
-                                    />
-                                </button>
-                                <button
-                                    onClick={() => {
-                                        const shouldDeletePost = confirm(
-                                            "Are you sure you want to delete this post ?"
-                                        );
-                                        if (shouldDeletePost) {
-                                            deletePost(post.id).then(() => {
-                                                router.push("/");
-                                            });
-                                        }
-                                    }}
-                                >
-                                    <Image
-                                        src={deleteIcon}
-                                        alt="Supprimer cet article"
-                                        width={24}
-                                        height={24}
-                                        layout="fixed"
-                                    />
-                                </button>
+                                <span>{post.category}</span>
+                                <span>
+                                    {getFormattedDate(post.dateCreated)}
+                                </span>
                             </div>
-                        )}
+                            {user && (
+                                <div>
+                                    <button
+                                        onClick={() =>
+                                            router.push(`/edit/${post.slug}`)
+                                        }
+                                    >
+                                        <Image
+                                            src={modifyIcon}
+                                            alt="Modifier cet article"
+                                            width={24}
+                                            height={24}
+                                            layout="fixed"
+                                        />
+                                    </button>
+                                    <button
+                                        onClick={() => {
+                                            const shouldDeletePost = confirm(
+                                                "Are you sure you want to delete this post ?"
+                                            );
+                                            if (shouldDeletePost) {
+                                                deletePost(post.id).then(() => {
+                                                    router.push("/");
+                                                });
+                                            }
+                                        }}
+                                    >
+                                        <Image
+                                            src={deleteIcon}
+                                            alt="Supprimer cet article"
+                                            width={24}
+                                            height={24}
+                                            layout="fixed"
+                                        />
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                        <h1>{post.title}</h1>
                     </div>
-                    <h1>{post.title}</h1>
-                </div>
-                <div className={styles.postPageCoverImage}>
-                    <Image
-                        src={post.coverImage}
-                        alt={post.coverImageAlt}
-                        layout="fill"
-                        objectFit="cover"
-                    />
-                </div>
-                <p dangerouslySetInnerHTML={{ __html: post.content }}></p>
-            </article>
-        </Layout>
+                    <div className={styles.postPageCoverImage}>
+                        <Image
+                            src={post.coverImage}
+                            alt={post.coverImageAlt}
+                            layout="fill"
+                            objectFit="cover"
+                        />
+                    </div>
+                    <p dangerouslySetInnerHTML={{ __html: post.content }}></p>
+                </article>
+            </Layout>
+        </>
     );
 }
 

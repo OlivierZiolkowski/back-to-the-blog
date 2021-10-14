@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import { getPostBySlug, updatePost } from "@lib/firebase";
 import { useAuth } from "@contexts/auth";
 import { Layout } from "@components";
@@ -78,111 +79,125 @@ export default function EditPage({ post }) {
     }
 
     return (
-        <Layout>
-            <div className={styles.EditPage}>
-                <form onSubmit={formik.handleSubmit}>
-                    <h1>Éditer le post : {post.title}</h1>
+        <>
+            <Head>
+                <title>Éditer {`"${post.title}"`} | Back to the blog !</title>
+                <meta
+                    name="viewport"
+                    content="initial-scale=1.0, width=device-width"
+                />
+            </Head>
+            <Layout>
+                <div className={styles.EditPage}>
+                    <form onSubmit={formik.handleSubmit}>
+                        <h1>Éditer le post : {post.title}</h1>
 
-                    {/* Post title field */}
-                    <label htmlFor="title">Titre de l&apos;article</label>
-                    <input
-                        id="title"
-                        name="title"
-                        type="text"
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.title}
-                    />
-                    {formik.touched.title && formik.errors.title ? (
-                        <div className="errorMessage">
-                            {formik.errors.title}
-                        </div>
-                    ) : null}
+                        {/* Post title field */}
+                        <label htmlFor="title">Titre de l&apos;article</label>
+                        <input
+                            id="title"
+                            name="title"
+                            type="text"
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            value={formik.values.title}
+                        />
+                        {formik.touched.title && formik.errors.title ? (
+                            <div className="errorMessage">
+                                {formik.errors.title}
+                            </div>
+                        ) : null}
 
-                    {/* Post category field */}
-                    <label htmlFor="category">Catégorie</label>
-                    <select
-                        id="category"
-                        name="category"
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                    >
-                        <option value=""></option>
-                        <option value="passé">Passé</option>
-                        <option value="présent">Présent</option>
-                        <option value="futur">Futur</option>
-                    </select>
-                    {formik.touched.category && formik.errors.category ? (
-                        <div className="errorMessage">
-                            {formik.errors.category}
-                        </div>
-                    ) : null}
+                        {/* Post category field */}
+                        <label htmlFor="category">Catégorie</label>
+                        <select
+                            id="category"
+                            name="category"
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                        >
+                            <option value=""></option>
+                            <option value="passé">Passé</option>
+                            <option value="présent">Présent</option>
+                            <option value="futur">Futur</option>
+                        </select>
+                        {formik.touched.category && formik.errors.category ? (
+                            <div className="errorMessage">
+                                {formik.errors.category}
+                            </div>
+                        ) : null}
 
-                    {/* Post cover image field */}
-                    <label htmlFor="coverImage">Illustration</label>
-                    <input
-                        id="coverImage"
-                        name="coverImage"
-                        type="file"
-                        accept="image/jpg"
-                        onChange={(event) => {
-                            formik.setFieldValue(
-                                "file",
-                                event.currentTarget.files[0]
-                            );
-                            previewFile();
-                        }}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.coverImage}
-                    />
+                        {/* Post cover image field */}
+                        <label htmlFor="coverImage">Illustration</label>
+                        <input
+                            id="coverImage"
+                            name="coverImage"
+                            type="file"
+                            accept="image/jpg"
+                            onChange={(event) => {
+                                formik.setFieldValue(
+                                    "file",
+                                    event.currentTarget.files[0]
+                                );
+                                previewFile();
+                            }}
+                            onBlur={formik.handleBlur}
+                            value={formik.values.coverImage}
+                        />
 
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img id="previewImg" src={post.coverImage} alt="preview" />
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                            id="previewImg"
+                            src={post.coverImage}
+                            alt="preview"
+                        />
 
-                    {formik.touched.coverImage && formik.errors.coverImage ? (
-                        <div className="errorMessage">
-                            {formik.errors.coverImage}
-                        </div>
-                    ) : null}
+                        {formik.touched.coverImage &&
+                        formik.errors.coverImage ? (
+                            <div className="errorMessage">
+                                {formik.errors.coverImage}
+                            </div>
+                        ) : null}
 
-                    {/* Post cover image alt field */}
-                    <label htmlFor="coverImageAlt">
-                        Description de l&apos;illustation
-                    </label>
-                    <input
-                        id="coverImageAlt"
-                        name="coverImageAlt"
-                        type="text"
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.coverImageAlt}
-                    />
-                    {formik.touched.coverImageAlt &&
-                    formik.errors.coverImageAlt ? (
-                        <div className="errorMessage">
-                            {formik.errors.coverImageAlt}
-                        </div>
-                    ) : null}
+                        {/* Post cover image alt field */}
+                        <label htmlFor="coverImageAlt">
+                            Description de l&apos;illustation
+                        </label>
+                        <input
+                            id="coverImageAlt"
+                            name="coverImageAlt"
+                            type="text"
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            value={formik.values.coverImageAlt}
+                        />
+                        {formik.touched.coverImageAlt &&
+                        formik.errors.coverImageAlt ? (
+                            <div className="errorMessage">
+                                {formik.errors.coverImageAlt}
+                            </div>
+                        ) : null}
 
-                    {/* Post content field */}
-                    <label htmlFor="content">Contenu</label>
-                    <textarea
-                        id="content"
-                        name="content"
-                        type="text"
-                        onChange={formik.handleChange}
-                        value={formik.values.content}
-                    />
-                    {formik.touched.content && formik.errors.content ? (
-                        <div className="errorMessage">
-                            {formik.errors.content}
-                        </div>
-                    ) : null}
+                        {/* Post content field */}
+                        <label htmlFor="content">Contenu</label>
+                        <textarea
+                            id="content"
+                            name="content"
+                            type="text"
+                            onChange={formik.handleChange}
+                            value={formik.values.content}
+                        />
+                        {formik.touched.content && formik.errors.content ? (
+                            <div className="errorMessage">
+                                {formik.errors.content}
+                            </div>
+                        ) : null}
 
-                    <button type="submit">Mettre à jour</button>
-                </form>
-            </div>
-        </Layout>
+                        <button type="submit">Mettre à jour</button>
+                    </form>
+                </div>
+            </Layout>
+        </>
     );
 }
 
