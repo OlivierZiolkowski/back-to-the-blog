@@ -23,7 +23,7 @@ export default function CreatePage() {
         initialValues: {
             title: "",
             category: "",
-            coverImage: undefined,
+            coverImage: null,
             coverImageAlt: "",
             content: "",
         },
@@ -38,9 +38,7 @@ export default function CreatePage() {
                     "Catégorie choisie invalide"
                 )
                 .required("Veuillez choisir une catégorie"),
-            coverImage: Yup.mixed().required(
-                "Veuillez ajouter un une illustration"
-            ),
+            coverImage: Yup.mixed(),
             coverImageAlt: Yup.string().required(
                 "Veillez ajouter une description de l'illustration"
             ),
@@ -51,16 +49,15 @@ export default function CreatePage() {
         // Defines what's happened on form submission
         onSubmit: (values) => {
             setIsLoading(true);
-            const imagePath = uploadImage(
-                values.coverImage,
-                slugifyTitle(values.title)
-            );
 
-            createPost(values, imagePath)
+            const imageFile = document.getElementById("coverImage").files[0];
+            const imageName = slugifyTitle(values.title);
+
+            createPost(values, imageFile, imageName)
                 .then(() => {
                     setIsLoading(false);
                     alert("Votre article a bien été créé");
-                    router.push("/");
+                    // router.push("/");
                 })
                 .catch((err) => {
                     alert(err);
@@ -130,7 +127,10 @@ export default function CreatePage() {
                         type="file"
                         accept="image/jpg"
                         onChange={(event) => {
-                            setFieldValue("file", event.currentTarget.files[0]);
+                            formik.setFieldValue(
+                                "file",
+                                event.currentTarget.files[0]
+                            );
                         }}
                         onBlur={formik.handleBlur}
                         value={formik.values.coverImage}
