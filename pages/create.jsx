@@ -18,7 +18,7 @@ export default function CreatePage() {
     // Create a 'loading' state when user creates a new post
     const [isLoading, setIsLoading] = useState(false);
 
-    // Check if user is autehnticated
+    // Check if user is authenticated
     const [user, userLoading] = useAuth();
 
     // Formik parameters for new post creation form

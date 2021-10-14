@@ -9,9 +9,14 @@ import styles from "@styles/edit.module.scss";
 import { previewFile, slugifyTitle } from "@lib/utils";
 
 export default function EditPage({ post }) {
+    // Create a new router from 'next-router'
     const router = useRouter();
-    const [user, userLoading] = useAuth();
+
+    // Create a 'loading' state when user creates a new post
     const [isLoading, setIsLoading] = useState(false);
+
+    // Check if user is authenticated
+    const [user, userLoading] = useAuth();
 
     // Formik parameters for update post form
     const formik = useFormik({
@@ -63,10 +68,10 @@ export default function EditPage({ post }) {
         },
     });
 
+    // Redirect to 404 if user is not authentified
     if (userLoading) {
         return null;
     }
-
     if (!user && typeof window !== "undefined") {
         router.push("./");
         return null;

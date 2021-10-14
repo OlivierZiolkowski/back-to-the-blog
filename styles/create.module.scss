@@ -1,50 +1,11 @@
 //* Global rules
 @import "./styles.scss";
 
-.CreatePage {
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 24px;
-  
-    form {
-      padding: 16px;
-  
-      h1 {
-        margin-top: 0;
-        margin-bottom: 24px;
-      }
-  
-      input,
-      select {
-        margin-bottom: 16px;
-      }
-
-      input ~ img {
-          width: 200px;
-          height: 100px;
-          display: none;
-          object-fit: cover;
-          margin-bottom: 20px;
-      }
-  
-      textarea {
-        height: 300px;
-      }
-  
-      button {
-        display: block;
-        margin-right: 0;
-        margin-left: auto;
-        margin-top: 24px;
-      }
-
-      div {
-        margin-top: -8px;
-        margin-bottom: 12px;
-        background-color: $c-red;
-        padding: 4px;
-        color: $c-first;
-      }
+.CreatePage { 
+  @include createEditPost {
+    input ~ img {
+      display: none;
     }
-  }
+  };
+}
   
