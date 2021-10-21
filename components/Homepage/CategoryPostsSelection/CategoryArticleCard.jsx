@@ -1,6 +1,15 @@
-import styles from "./CategoryArticleCard.module.scss";
+/**
+ * CategoryArticleCard represents each Article Card
+ * inside Category Posts Section on Homepage.
+ */
+
+// Components / Hooks / Functions
 import PropTypes from "prop-types";
 
+// Assets & styles
+import styles from "./CategoryArticleCard.module.scss";
+
+//* ArticleCard component
 export default function ArticleCard({ title, category, content, coverImage }) {
     const divBackground = {
         background: "center/cover no-repeat url(" + coverImage + ")",
@@ -21,6 +30,7 @@ export default function ArticleCard({ title, category, content, coverImage }) {
     );
 }
 
+// PropTypes
 ArticleCard.propTypes = {
     title: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
@@ -28,6 +38,7 @@ ArticleCard.propTypes = {
     coverImage: PropTypes.string,
 };
 
+// Default props
 ArticleCard.defaultProps = {
     description: "aucune description",
     coverImage:
