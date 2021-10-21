@@ -42,19 +42,21 @@ L'administrateur est capable de :
 
 ### Screenshots
 
-**Homepage - utilisateur connecté**
+**Page d'accueil**
 
-Utilisateur connecté visible avec les icônes d'outils disponbiles dans la barre de navigation
-![Homepage](./docs/screenshots/signInHomepage.jpg)
+Version desktop 👇
+![Homepage](./docs/screenshots/BTTB__Homepage--desktop.jpg)
+Version mobile 👇
+![Homepage](./docs/screenshots/BTTB__Homepage--mobile.jpg)
 
-**Article - utilisateur non connecté**
-![Post](docs/screenshots/signedOutArticle.jpg)
+**Page d'article** 👇
+![PostPage](docs/screenshots/BTTB__Postpage--desktop.jpg)
 
-**Page de connexion**
-![signInPage](docs/screenshots/signIn.jpg)
+**Page d'articles par catégorie** 👇
+![CategoryPage](docs/screenshots/BTTB__CategoryPage--mobile.jpg)
 
-**Page de rédaction / édition d'un article**
-![writePost](docs/screenshots/writePost.jpg)
+**Page de rédaction / édition d'un article** 👇
+![editPost](docs/screenshots/BTTB__EditPost--desktop.jpg)
 
 ### Liens
 
