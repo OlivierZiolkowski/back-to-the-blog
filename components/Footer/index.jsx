@@ -1,3 +1,8 @@
+/**
+ * This component represent the footer of the page.
+ * It's composed of a background-image & social links icons
+ */
+
 // Next components
 import Link from "next/link";
 import Image from "next/image";
@@ -11,10 +16,6 @@ import githubLogo from "../../assets/icons/githubIcon.svg";
 import linkedinLogo from "../../assets/icons/linkedinIcon.svg";
 import emailIcon from "../../assets/icons/emailIcon.svg";
 
-/**
- * This component represent the footer of the page.
- * It's composed of a background-image & social links icons
- */
 export default function Footer() {
     return (
         <footer className={styles.footer}>
