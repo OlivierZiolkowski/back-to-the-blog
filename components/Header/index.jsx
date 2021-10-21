@@ -1,4 +1,9 @@
-// Components
+/**
+ * Header component is used to display main menu & commands
+ * and sub components like Nav component
+ */
+
+// Components & hooks
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "./Nav";
@@ -15,6 +20,7 @@ import signOutIcon from "@assets/icons/userSignOut.png";
 import createPostIcon from "@assets/icons/blogIcon.png";
 import styles from "./header.module.scss";
 
+// Header component
 export default function Header() {
     const [user] = useAuth();
     const router = useRouter();
@@ -27,7 +33,7 @@ export default function Header() {
 
     return (
         <header className={styles.header}>
-            {/* Logo */}
+            {/** Logo */}
             <Link href="/">
                 <a>
                     <Image
@@ -40,12 +46,16 @@ export default function Header() {
                 </a>
             </Link>
 
-            {/* Navbar */}
+            {/** Navbar menu
+             * includes posts categories & about secction
+             */}
             <Navbar visible={visible} />
 
-            {/* Search & Menu logos */}
+            {/** Search & Menu logos */}
             <div className={styles.commands}>
-                {/** User signIn / signOut & create post buttons */}
+                {/** User signIn / signOut & create post buttons
+                 * if an user is connected, commands buttons appears
+                 */}
                 {user && (
                     <>
                         {/** User SignOut button */}
@@ -63,6 +73,7 @@ export default function Header() {
                                 layout="fixed"
                             />
                         </button>
+
                         {/** User Create Post button */}
                         <button
                             className={styles.command}
@@ -79,7 +90,9 @@ export default function Header() {
                     </>
                 )}
 
-                {/** User SignIn button */}
+                {/** User SignIn button
+                 * if an user is not connected
+                 */}
                 {!user && (
                     <button
                         className={styles.command}
@@ -95,7 +108,7 @@ export default function Header() {
                     </button>
                 )}
 
-                {/* Menu logo (only visible on mobile screens) */}
+                {/** Menu logo (only visible on mobile screens) */}
                 <div className={styles.menuLogo} onClick={() => displayMenu()}>
                     <Image
                         layout="fixed"
