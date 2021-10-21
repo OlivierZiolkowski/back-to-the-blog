@@ -1,23 +1,31 @@
+/**
+ * PostPage component represents a single post page.
+ */
+
 // Functions
 import { getPostBySlug, deletePost } from "@lib/firebase";
 import { getFormattedDate } from "@lib/utils";
+
 // Components
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Head from "next/head";
 import { Layout } from "@components";
 import { useAuth } from "@contexts/auth";
+
 // Styles & assets
 import styles from "@styles/post.module.scss";
 import modifyIcon from "@assets/icons/modifyIcon.svg";
 import deleteIcon from "@assets/icons/deleteIcon.svg";
 
+//* PostPage component
 export default function PostPage({ post }) {
     const router = useRouter();
     const [user] = useAuth();
 
     // Check if post 'Object' receives one or more property
     const postLength = Object.keys(post).length;
+
     // If post is empty, redirect to 404
     if (postLength === 0 && typeof window !== "undefined") {
         router.push("/404");
@@ -31,15 +39,30 @@ export default function PostPage({ post }) {
 
     return (
         <>
+            {/**
+             * Head page parameters
+             */}
             <Head>
                 <title>{post.title} | Back to the blog !</title>
                 <meta
                     name="viewport"
                     content="initial-scale=1.0, width=device-width"
                 />
+                <meta
+                    name="description"
+                    content={post.content.substr(0, 100)}
+                />
             </Head>
+
+            {/**
+             * Body page elements
+             */}
             <Layout>
                 <article className={styles.postPage}>
+                    {/**
+                     * Header of a post - contains informations
+                     * and commands is an user is connected
+                     */}
                     <div className={styles.postPageHeader}>
                         <div>
                             <div>
@@ -48,6 +71,10 @@ export default function PostPage({ post }) {
                                     {getFormattedDate(post.dateCreated)}
                                 </span>
                             </div>
+
+                            {/**
+                             * Only if an user is connected
+                             */}
                             {user && (
                                 <div>
                                     <button
@@ -88,6 +115,10 @@ export default function PostPage({ post }) {
                         </div>
                         <h1>{post.title}</h1>
                     </div>
+
+                    {/**
+                     * Post main illustration
+                     */}
                     <div className={styles.postPageCoverImage}>
                         <Image
                             src={post.coverImage}
@@ -96,6 +127,10 @@ export default function PostPage({ post }) {
                             objectFit="cover"
                         />
                     </div>
+
+                    {/**
+                     * Contains the paragraphs of the post
+                     */}
                     <p dangerouslySetInnerHTML={{ __html: post.content }}></p>
                 </article>
             </Layout>
