@@ -1,3 +1,9 @@
+/**
+ * Homepage represents the homepage of the app
+ * It's contains a section with the last three articles
+ * and a section by posts category
+ */
+
 // Assets & stylesheets
 import styles from "@styles/index.module.scss";
 
@@ -10,11 +16,7 @@ import Head from "next/head";
 // Functions
 import { getPosts } from "@lib/firebase";
 
-/*
-    App's homepage with differents sections :
-    - Last articles (from date) on top
-    - By category (one section for each)
-*/
+//* Homepage component
 export default function Homepage({ posts }) {
     return (
         <>
