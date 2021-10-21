@@ -1,4 +1,9 @@
-// Functions & methods
+/**
+ * This component represent article cards on
+ * the first section of the homepage.
+ */
+
+// Functions
 import { getFormattedDate } from "@lib/utils";
 
 // Utils
@@ -7,10 +12,7 @@ import PropTypes from "prop-types";
 // Assets & styles
 import styles from "./LastArticleCard.module.scss";
 
-/*
-    This component represent article cards on the top 
-    of the homepage.
-*/
+//* LastArticleCard component
 export default function LastArticleCard({ title, picture, category, date }) {
     return (
         <article
