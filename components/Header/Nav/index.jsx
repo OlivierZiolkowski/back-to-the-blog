@@ -1,10 +1,23 @@
+/**
+ * Nav is a sub-component used inside Header component
+ * It's handle post categories links & about section link
+ */
+
+// Hooks & components
 import { useState, useEffect } from "react";
 import { getCategories } from "@lib/firebase";
-import styles from "./nav.module.scss";
 import Link from "next/link";
+import PropTypes, { bool } from "prop-types";
 
+// Assets & styles
+import styles from "./nav.module.scss";
+
+// Nav component
 export default function Nav({ visible }) {
+    // Defines useState hook to setting dynamic categories
     const [categories, setCategories] = useState([]);
+
+    // Defines useState to fetch categories on component mounting
     useEffect(() => {
         async function fetchCategories() {
             try {
@@ -40,3 +53,8 @@ export default function Nav({ visible }) {
         </nav>
     );
 }
+
+// PropTypes
+Nav.propTypes = {
+    visible: PropTypes.bool.isRequired,
+};
