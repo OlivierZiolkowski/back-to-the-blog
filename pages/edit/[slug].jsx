@@ -1,14 +1,23 @@
+/**
+ * EditPage represents a page where
+ * an authenticated user can edit a post.
+ */
+
+// Components / hooks / functions
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import { getPostBySlug, updatePost } from "@lib/firebase";
 import { useAuth } from "@contexts/auth";
 import { Layout } from "@components";
+import { getPostBySlug, updatePost } from "@lib/firebase";
+import { previewFile, slugifyTitle } from "@lib/utils";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import styles from "@styles/edit.module.scss";
-import { previewFile, slugifyTitle } from "@lib/utils";
 
+// Assets & styles
+import styles from "@styles/edit.module.scss";
+
+//* Edit page component
 export default function EditPage({ post }) {
     // Create a new router from 'next-router'
     const router = useRouter();
@@ -29,7 +38,7 @@ export default function EditPage({ post }) {
             content: post.content,
             id: post.id,
         },
-        // Validation
+        // Validation schema
         validationSchema: Yup.object({
             title: Yup.string()
                 .max(100, "Le titre doit faire moins de 100 caractères")
