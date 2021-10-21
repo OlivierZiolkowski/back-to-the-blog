@@ -1,11 +1,20 @@
-import { Layout } from "@components";
+/**
+ * Category Page component.
+ * Defines a page who contains a page with posts
+ * with a selected category.
+ */
+
+// Components / Hooks / functions
+import { Layout, ArticleCategoryCard } from "@components";
+import { getPostsByCategory } from "@lib/firebase";
 import Link from "next/link";
 import Head from "next/head";
-import styles from "@styles/category.module.scss";
-import { getPostsByCategory } from "@lib/firebase";
 import { useRouter } from "next/router";
-import { ArticleCategoryCard } from "@components";
 
+// Assets & styles
+import styles from "@styles/category.module.scss";
+
+//* CategoryPage component
 export default function CategoryPage({ posts }) {
     const router = useRouter();
     const { slug } = router.query;
@@ -21,13 +30,24 @@ export default function CategoryPage({ posts }) {
 
     return (
         <>
+            {/**
+             * Head page parameters
+             */}
             <Head>
                 <title>{slug} | Back to the blog !</title>
                 <meta
                     name="viewport"
                     content="initial-scale=1.0, width=device-width"
                 />
+                <meta
+                    name="description"
+                    content={`Retrouvez tous les articles de la catégorie ${slug} de Back to the blog !`}
+                />
             </Head>
+
+            {/**
+             * Body page elements
+             */}
             <Layout>
                 <main className={styles.categoryPage}>
                     <h1>Tous les articles du {slug}</h1>
