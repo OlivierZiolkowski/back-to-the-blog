@@ -1,3 +1,9 @@
+/**
+ * CreatePage component represent a page
+ * where an authenticated user can create
+ * a new post.
+ */
+
 // Functions & components
 import { Layout } from "@components";
 import { useFormik } from "formik";
@@ -31,7 +37,7 @@ export default function CreatePage() {
             coverImageAlt: "",
             content: "",
         },
-        // Validation
+        // Validation schema
         validationSchema: Yup.object({
             title: Yup.string()
                 .max(100, "Le titre doit faire moins de 100 caractères")
