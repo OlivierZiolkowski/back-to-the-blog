@@ -1,3 +1,8 @@
+/**
+ * Signin page represents where an user can
+ * logged with his id / password
+ */
+
 // Components
 import { Layout } from "@components";
 import { useRouter } from "next/router";
@@ -10,6 +15,7 @@ import * as Yup from "yup";
 // Styles
 import styles from "@styles/signin.module.scss";
 
+//* SignInPage component
 const SignInPage = () => {
     const router = useRouter();
     const [user, userLoading] = useAuth();
