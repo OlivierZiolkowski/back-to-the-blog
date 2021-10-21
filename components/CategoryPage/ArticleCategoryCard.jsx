@@ -1,14 +1,14 @@
-// Components
-import Image from "next/image";
-import PropTypes from "prop-types";
-// Functions
-import { getFormattedDate } from "@lib/utils";
-
 /**
  * This component is used for defines a post card
  * on CategoryPage. This component receives some
  * properties from his parent 'CategoryPage'.
  */
+
+// Components
+import Image from "next/image";
+import PropTypes from "prop-types";
+// Functions
+import { getFormattedDate } from "@lib/utils";
 
 export default function ArticleCategoryCard({
     title,
