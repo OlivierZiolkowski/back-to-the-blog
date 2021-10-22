@@ -3,7 +3,7 @@
  */
 
 // Functions
-import { getPostBySlug, deletePost } from "@lib/firebase";
+import { getPostBySlug, deletePost, getPosts } from "@lib/firebase";
 import { getFormattedDate } from "@lib/utils";
 
 // Components
@@ -138,8 +138,20 @@ export default function PostPage({ post }) {
     );
 }
 
-export async function getServerSideProps(context) {
-    const post = await getPostBySlug(context.query.slug);
+// Pre-render each post & indicates the path
+export async function getStaticPaths() {
+    const posts = await getPosts();
+
+    const paths = posts.map((post) => ({
+        params: { slug: post.slug },
+    }));
+
+    return { paths, fallback: false };
+}
+
+// Generates props for the post page
+export async function getStaticProps({ params }) {
+    const post = await getPostBySlug(params.slug);
 
     return {
         props: {
