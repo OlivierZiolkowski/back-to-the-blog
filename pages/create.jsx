@@ -84,7 +84,7 @@ export default function CreatePage() {
                                 <label htmlFor="title">
                                     Titre de l&apos;article
                                 </label>
-                                <Field type="text" name="title" />
+                                <Field name="title" />
                                 <ErrorMessage
                                     name="title"
                                     render={(msg) => (
