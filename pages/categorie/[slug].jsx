@@ -6,7 +6,7 @@
 
 // Components / Hooks / functions
 import { Layout, ArticleCategoryCard } from "@components";
-import { getPostsByCategory } from "@lib/firebase";
+import { getPostsByCategory, getCategories } from "@lib/firebase";
 import Link from "next/link";
 import Head from "next/head";
 import { useRouter } from "next/router";
@@ -76,8 +76,20 @@ export default function CategoryPage({ posts }) {
     );
 }
 
-export async function getServerSideProps(context) {
-    const posts = await getPostsByCategory(context.query.slug);
+// Pre-render each post & indicates the path
+export async function getStaticPaths() {
+    const categories = await getCategories();
+
+    const paths = categories.map((category) => ({
+        params: { slug: category.title },
+    }));
+
+    return { paths, fallback: false };
+}
+
+// Generates props for the post page
+export async function getStaticProps({ params }) {
+    const posts = await getPostsByCategory(params.slug);
 
     return {
         props: {
