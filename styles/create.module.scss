@@ -6,10 +6,12 @@
 @import "./styles.scss";
 
 .CreatePage { 
-  @include createEditPost {
+  @include form-rules {
     input ~ img {
       display: none;
     }
   };
+
+  @include form-shape;
 }
   

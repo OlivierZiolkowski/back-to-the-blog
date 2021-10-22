@@ -5,6 +5,8 @@
 @import '@styles/styles.scss';
 
 .EditPage {
-  @include createEditPost;
+  @include form-rules;
+
+  @include form-shape;
 }
   

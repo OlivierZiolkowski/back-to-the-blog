@@ -1,13 +1,9 @@
 /**
- * createEditPost represents rules for
- * createPost & editPost pages
+ * forms represents rules for
+ * each form of the app
 */
 
-@mixin createEditPost {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 24px;
-
+@mixin form-rules {
     form {
         h1 {
             margin-top: 0;
@@ -34,9 +30,7 @@
 
         button {
             display: block;
-            margin-right: 0;
-            margin-left: auto;
-            margin-top: 24px;
+            margin: 24px 0 24px auto;
         }
         
         // Errors messages are on div
@@ -50,4 +44,10 @@
     }
 
     @content;
+}
+
+@mixin form-shape {
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
 }
