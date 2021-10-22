@@ -113,6 +113,8 @@ export default function CreatePage() {
                                 name="coverImage"
                                 accept="image/jpg"
                                 onChange={(event) => {
+                                    //! TODO - fix "setFieldValue is not defined"
+                                    //! after uploading a picture
                                     setFieldValue(
                                         "file",
                                         event.currentTarget.files[0]
