@@ -49,7 +49,6 @@ export default function CreatePage() {
             <Layout>
                 <div className={styles.CreatePage}>
                     <h1>Écrire un nouvel article</h1>
-
                     <Formik
                         initialValues={{
                             title: "",
@@ -62,8 +61,9 @@ export default function CreatePage() {
                         onSubmit={(values) => {
                             setIsLoading(true);
 
-                            const imageFile =
-                                document.getElementById("coverImage").files[0];
+                            const imageFile = document.querySelector(
+                                "input[name='coverImage']"
+                            ).files[0];
                             const imageName = slugifyTitle(values.title);
 
                             createPost(values, imageFile, imageName)
@@ -78,86 +78,95 @@ export default function CreatePage() {
                                 });
                         }}
                     >
-                        <Form>
-                            {/* Post title field */}
-                            <label htmlFor="title">
-                                Titre de l&apos;article
-                            </label>
-                            <Field type="text" name="title" />
-                            <ErrorMessage
-                                name="title"
-                                render={(msg) => (
-                                    <div className="errorMessage">{msg}</div>
-                                )}
-                            />
+                        {({ setFieldValue }) => (
+                            <Form>
+                                {/* Post title field */}
+                                <label htmlFor="title">
+                                    Titre de l&apos;article
+                                </label>
+                                <Field type="text" name="title" />
+                                <ErrorMessage
+                                    name="title"
+                                    render={(msg) => (
+                                        <div className="errorMessage">
+                                            {msg}
+                                        </div>
+                                    )}
+                                />
 
-                            {/* Post category field */}
-                            <label htmlFor="category">Catégorie</label>
-                            <Field as="select" name="category">
-                                <option value=""></option>
-                                <option value="passé">Passé</option>
-                                <option value="présent">Présent</option>
-                                <option value="futur">Futur</option>
-                            </Field>
-                            <ErrorMessage
-                                name="category"
-                                render={(msg) => (
-                                    <div className="errorMessage">{msg}</div>
-                                )}
-                            />
+                                {/* Post category field */}
+                                <label htmlFor="category">Catégorie</label>
+                                <Field as="select" name="category">
+                                    <option value=""></option>
+                                    <option value="passé">Passé</option>
+                                    <option value="présent">Présent</option>
+                                    <option value="futur">Futur</option>
+                                </Field>
+                                <ErrorMessage
+                                    name="category"
+                                    render={(msg) => (
+                                        <div className="errorMessage">
+                                            {msg}
+                                        </div>
+                                    )}
+                                />
 
-                            {/* Post cover image field */}
-                            <label htmlFor="coverImage">Illustration</label>
-                            <Field
-                                type="file"
-                                name="coverImage"
-                                accept="image/jpg"
-                                onChange={(event) => {
-                                    //! TODO - fix "setFieldValue is not defined"
-                                    //! after uploading a picture
-                                    setFieldValue(
-                                        "file",
-                                        event.currentTarget.files[0]
-                                    );
-                                    previewFile();
-                                }}
-                            />
+                                {/* Post cover image field */}
+                                <label htmlFor="coverImage">Illustration</label>
+                                <Field
+                                    type="file"
+                                    name="coverImage"
+                                    accept="image/jpg"
+                                    onChange={(event) => {
+                                        setFieldValue(
+                                            "file",
+                                            event.currentTarget.files[0]
+                                        );
+                                        previewFile();
+                                    }}
+                                />
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img id="previewImg" alt="preview" />
+                                <ErrorMessage
+                                    name="coverImage"
+                                    render={(msg) => (
+                                        <div className="errorMessage">
+                                            {msg}
+                                        </div>
+                                    )}
+                                />
 
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img id="previewImg" alt="preview" />
-                            <ErrorMessage
-                                name="coverImage"
-                                render={(msg) => (
-                                    <div className="errorMessage">{msg}</div>
-                                )}
-                            />
+                                {/* Post cover image alt field */}
+                                <label htmlFor="coverImageAlt">
+                                    Description de l&apos;illustation
+                                </label>
+                                <Field name="coverImageAlt" />
+                                <ErrorMessage
+                                    name="coverImageAlt"
+                                    render={(msg) => (
+                                        <div className="errorMessage">
+                                            {msg}
+                                        </div>
+                                    )}
+                                />
 
-                            {/* Post cover image alt field */}
-                            <label htmlFor="coverImageAlt">
-                                Description de l&apos;illustation
-                            </label>
-                            <Field name="coverImageAlt" />
-                            <ErrorMessage
-                                name="coverImageAlt"
-                                render={(msg) => (
-                                    <div className="errorMessage">{msg}</div>
-                                )}
-                            />
+                                {/* Post content field */}
+                                <label htmlFor="content">Contenu</label>
+                                <Field as="textarea" name="content" />
+                                <ErrorMessage
+                                    name="content"
+                                    render={(msg) => (
+                                        <div className="errorMessage">
+                                            {msg}
+                                        </div>
+                                    )}
+                                />
 
-                            {/* Post content field */}
-                            <label htmlFor="content">Contenu</label>
-                            <Field as="textarea" name="content" />
-                            <ErrorMessage
-                                name="content"
-                                render={(msg) => (
-                                    <div className="errorMessage">{msg}</div>
-                                )}
-                            />
-
-                            <button type="submit">
-                                Créer un nouvel article
-                            </button>
-                        </Form>
+                                <button type="submit">
+                                    Créer un nouvel article
+                                </button>
+                            </Form>
+                        )}
                     </Formik>
                 </div>
             </Layout>
