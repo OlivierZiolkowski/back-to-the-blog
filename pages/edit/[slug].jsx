@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import { useAuth } from "@contexts/auth";
 import { Layout } from "@components";
-import { getPostBySlug, updatePost } from "@lib/firebase";
+import { getPostBySlug, updatePost, getPosts } from "@lib/firebase";
 import { previewFile, slugifyTitle } from "@lib/utils";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { EditPostValidationSchema } from "@lib/yup";
@@ -163,8 +163,19 @@ export default function EditPage({ post }) {
     );
 }
 
-export async function getServerSideProps(context) {
-    const post = await getPostBySlug(context.query.slug);
+// Pre-render each post & indicates the path
+export async function getStaticPaths() {
+    const posts = await getPosts();
+
+    const paths = posts.map((post) => ({
+        params: { slug: post.slug },
+    }));
+
+    return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
+    const post = await getPostBySlug(params.slug);
 
     return {
         props: {
