@@ -71,7 +71,7 @@ export default function Homepage({ posts }) {
 }
 
 // Generate props at each user's request
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const posts = await getPosts();
 
     return {
