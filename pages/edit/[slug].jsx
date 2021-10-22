@@ -1,5 +1,3 @@
-//! TODO - Fix image disappearing after update post
-
 /**
  * EditPage represents a page where
  * an authenticated user can edit a post.
@@ -67,8 +65,10 @@ export default function EditPage({ post }) {
                             const imageFile = document.querySelector(
                                 "input[name='coverImage']"
                             ).files[0];
-                            const imageName = slugifyTitle(values.title);
-
+                            const imageName =
+                                typeof imageFile !== "undefined"
+                                    ? slugifyTitle(values.title)
+                                    : null;
                             updatePost(values, imageFile, imageName)
                                 .then(() => {
                                     setIsLoading(false);
