@@ -6,7 +6,7 @@ Dans ce projet, j'ai souhaité me tourner vers l'apprentissage du framework **[N
 
 La thématique sera autour de la trilogie "Retour vers le futur" (clin d'oeil à la promo McFly O'Clock 2020 😉) et aux acteurs du film mais je ne pense pas qu'ils viendront un jour sur ce repo mais sait-on jamais 😅 !
 
-**CE PROJET EN COURS DE CONSTRUCTION** - dernière mise à jour de ce document : 22 octobre 2021
+**Dernière mise à jour de ce document : 22 octobre 2021**
 
 ## Sommaire
 
